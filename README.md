@@ -132,6 +132,30 @@ register.html
 
 ---
 
+## Screenshots
+
+### Registration Page:
+
+
+<img width="1911" height="908" alt="Screenshot 2025-12-10 223024" src="https://github.com/user-attachments/assets/916b089f-5207-4414-949d-bf0426eb15b2" />
+
+
+### Products Page:
+
+
+<img width="1890" height="907" alt="Screenshot 2025-12-10 223149" src="https://github.com/user-attachments/assets/1406cd60-5404-42b4-b8d6-36c1c4757b16" />
+
+### Cart Page:
+
+
+<img width="1897" height="906" alt="Screenshot 2025-12-10 223230" src="https://github.com/user-attachments/assets/dda9f1a4-bf41-40c9-943e-ab9498a3fd79" />
+
+### Profile Page
+
+
+<img width="1900" height="911" alt="Screenshot 2025-12-10 223257" src="https://github.com/user-attachments/assets/00e05701-2ae4-4060-b3bc-e56056ae660a" />
+
+
 
 
 
