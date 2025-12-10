@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmartShop - Register</title>
+    <style>
+      body {
+        font-family: "Inter", "Segoe UI", Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #eef4f7;
+        color: #1c1c1c;
+      }
+
+      /* HEADER */
+      header {
+        background: linear-gradient(135deg, #283593, #2b7a78);
+        padding: 28px;
+        text-align: center;
+        color: #fff;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+      }
+
+      header h1 {
+        margin: 0;
+        font-weight: 600;
+        letter-spacing: 0.6px;
+      }
+
+      /* MAIN CONTAINER */
+      .container {
+        max-width: 460px;
+        background: #ffffff;
+        padding: 32px;
+        margin: 70px auto;
+        border-radius: 14px;
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 0.45s ease;
+      }
+
+      /* LABEL + INPUTS */
+      form div {
+        margin-bottom: 22px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        font-size: 15px;
+        color: #2b2b2b;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="password"] {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid #d3d7de;
+        border-radius: 8px;
+        background: #f7f9fb;
+        font-size: 15px;
+        transition: all 0.25s ease;
+      }
+
+      input:focus {
+        border-color: #3aafa9;
+        background: #ffffff;
+        box-shadow: 0 0 0 3px rgba(58, 175, 169, 0.25);
+        outline: none;
+      }
+
+      /* BUTTON */
+      button {
+        background: linear-gradient(135deg, #3aafa9, #2b7a78);
+        color: #fff;
+        border: none;
+        padding: 14px;
+        width: 100%;
+        font-size: 17px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: 0.25s ease;
+        box-shadow: 0 5px 16px rgba(43, 122, 120, 0.35);
+      }
+
+      button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 7px 20px rgba(43, 122, 120, 0.45);
+      }
+
+      /* HEADINGS */
+      h2 {
+        text-align: center;
+        margin-top: 0;
+        margin-bottom: 28px;
+        font-weight: 700;
+        font-size: 24px;
+        color: #1d2f48;
+        letter-spacing: 0.4px;
+      }
+
+      /* ERRORS */
+      .error {
+        color: #d80000;
+        font-size: 13px;
+        margin-top: 6px;
+      }
+
+      /* ANIMATION */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+    <!-- <style>
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #eef1f5;
+            color: #333;
+        }
+
+        header {
+            background: #202938;
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+        }
+
+        header h1 {
+            margin: 0;
+            font-weight: 600;
+        }
+        .container {
+            max-width: 450px;
+            background: #fff;
+            padding: 25px;
+            margin: 40px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        form div {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        input[type="text"], 
+        input[type="email"], 
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #c9c9c9;
+            border-radius: 6px;
+            font-size: 15px;
+            transition: 0.25s;
+        }
+
+        input:focus {
+            border-color: #4CAF50;
+            outline: none;
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+        }
+        button {
+            background: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #3e9443;
+        }
+        .error {
+            color: #d80000;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+    </style> -->
+  </head>
+  <body>
+    <header>
+      <h1>SmartShop Portal</h1>
+    </header>
+
+    <div class="container">
+      <form id="registerForm">
+        <h2 style="text-align: center; margin-top: 0; margin-bottom: 20px">
+          Create Account
+        </h2>
+
+        <div>
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" required />
+          <div class="error" id="nameError"></div>
+        </div>
+
+        <div>
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" required />
+          <div class="error" id="emailError"></div>
+        </div>
+
+        <div>
+          <label for="password">Password (min 6 characters)</label>
+          <input type="password" id="password" name="password" required />
+          <div class="error" id="passwordError"></div>
+        </div>
+
+        <div>
+          <label for="confirmPassword">Confirm Password</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            required
+          />
+          <div class="error" id="confirmPasswordError"></div>
+        </div>
+
+        <button type="submit">Register</button>
+      </form>
+    </div>
+
+    <script>
+      document
+        .getElementById("registerForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          document
+            .querySelectorAll(".error")
+            .forEach((el) => (el.textContent = ""));
+
+          const name = document.getElementById("name").value.trim();
+          const email = document.getElementById("email").value.trim();
+          const password = document.getElementById("password").value;
+          const confirmPassword =
+            document.getElementById("confirmPassword").value;
+
+          let isValid = true;
+
+          if (!name) {
+            document.getElementById("nameError").textContent =
+              "Name is required.";
+            isValid = false;
+          }
+
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!email || !emailRegex.test(email)) {
+            document.getElementById("emailError").textContent =
+              "Enter a valid email.";
+            isValid = false;
+          }
+
+          if (password.length < 6) {
+            document.getElementById("passwordError").textContent =
+              "Password too short.";
+            isValid = false;
+          }
+
+          if (password !== confirmPassword) {
+            document.getElementById("confirmPasswordError").textContent =
+              "Passwords do not match.";
+            isValid = false;
+          }
+
+          if (isValid) {
+            const user = { name, email, password };
+            localStorage.setItem("user", JSON.stringify(user));
+            window.location.href = "products.html";
+          }
+        });
+    </script>
+  </body>
+</html>

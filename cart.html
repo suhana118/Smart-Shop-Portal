@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmartShop - Cart</title>
+    <style>
+      /* ===== Global ===== */
+      body {
+        font-family: "Inter", "Segoe UI", Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #eef4f7;
+        color: #1f1f1f;
+      }
+
+      /* ===== Header ===== */
+      header {
+        background: linear-gradient(135deg, #283593, #2b7a78);
+        color: white;
+        padding: 22px 0;
+        text-align: center;
+        font-size: 26px;
+        font-weight: 700;
+        position: relative;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 22px;
+        left: 20px;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        margin: 0 12px;
+        font-size: 16px;
+        font-weight: 500;
+        transition: 0.25s ease;
+      }
+
+      .nav-links a:hover {
+        opacity: 0.8;
+      }
+
+      /* ===== Container ===== */
+      .container {
+        max-width: 900px;
+        margin: 40px auto;
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 14px;
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 0.4s ease;
+      }
+
+      .container h2 {
+        margin-top: 0;
+        text-align: center;
+        font-size: 28px;
+        margin-bottom: 30px;
+        color: #1d2f48;
+        font-weight: 700;
+      }
+
+      /* ===== Cart Item ===== */
+      .cart-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #f7f9fb;
+        padding: 18px;
+        margin-bottom: 18px;
+        border-radius: 10px;
+        border: none;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+      }
+
+      .cart-item:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+      }
+
+      .cart-item h3 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 600;
+        color: #1d2f48;
+      }
+
+      .cart-item p {
+        margin-top: 6px;
+        font-size: 17px;
+        font-weight: bold;
+        color: #2b7a78;
+      }
+
+      /* ===== Remove Button ===== */
+      .remove-btn {
+        background: #e63946;
+        color: white;
+        border: none;
+        padding: 10px 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        transition: 0.25s ease;
+        box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
+      }
+
+      .remove-btn:hover {
+        transform: translateY(-2px);
+        background: #c92c38;
+        box-shadow: 0 7px 20px rgba(230, 57, 70, 0.45);
+      }
+
+      /* ===== Total ===== */
+      .total {
+        text-align: right;
+        font-size: 22px;
+        font-weight: bold;
+        margin-top: 30px;
+        color: #1d2f48;
+      }
+
+      /* ===== Empty Cart ===== */
+      .empty-cart {
+        text-align: center;
+        font-size: 20px;
+        color: #666;
+        margin-top: 30px;
+      }
+
+      /* ===== Animation ===== */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+    <!-- <style>
+        /* ===== Global ===== */
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #eef1f5;
+            color: #333;
+        }
+
+        /* ===== Header ===== */
+        header {
+            background: #202938;
+            color: white;
+            padding: 18px 0;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .nav-links {
+            position: absolute;
+            top: 18px;
+            left: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== Container ===== */
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .container h2 {
+            margin-top: 0;
+            text-align: center;
+            font-size: 26px;
+            margin-bottom: 25px;
+        }
+
+        /* ===== Cart Item ===== */
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fafafa;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            border: 1px solid #ddd;
+            transition: 0.25s;
+        }
+
+        .cart-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 14px rgba(0,0,0,0.1);
+        }
+
+        .cart-item h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .cart-item p {
+            margin: 5px 0 0 0;
+            color: #4CAF50;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* ===== Remove Button ===== */
+        .remove-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.25s;
+        }
+
+        .remove-btn:hover {
+            background: #b92633;
+        }
+
+        /* ===== Total ===== */
+        .total {
+            text-align: right;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 25px;
+        }
+
+        /* ===== Empty Cart ===== */
+        .empty-cart {
+            text-align: center;
+            font-size: 20px;
+            color: #666;
+        }
+    </style> -->
+  </head>
+  <body>
+    <header>
+      <div class="nav-links">
+        <a href="products.html">Products</a>
+        <a href="profile.html">Profile</a>
+      </div>
+      SmartShop Portal
+    </header>
+
+    <div class="container">
+      <h2>Your Cart</h2>
+
+      <div id="cartContainer"></div>
+      <div id="total" class="total"></div>
+      <div id="emptyCart" class="empty-cart" style="display: none">
+        Your cart is empty.
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        displayCart();
+      });
+
+      function displayCart() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const container = document.getElementById("cartContainer");
+        const totalDiv = document.getElementById("total");
+        const emptyDiv = document.getElementById("emptyCart");
+
+        if (cart.length === 0) {
+          container.innerHTML = "";
+          totalDiv.textContent = "";
+          emptyDiv.style.display = "block";
+          return;
+        }
+
+        emptyDiv.style.display = "none";
+        container.innerHTML = "";
+        let total = 0;
+
+        cart.forEach((item, index) => {
+          const card = document.createElement("div");
+          card.className = "cart-item";
+
+          card.innerHTML = `
+                    <div>
+                        <h3>${item.title}</h3>
+                        <p>$${item.price}</p>
+                    </div>
+                    <button class="remove-btn" data-index="${index}">Remove</button>
+                `;
+
+          container.appendChild(card);
+          total += item.price;
+        });
+
+        totalDiv.textContent = `Total: $${total.toFixed(2)}`;
+
+        // Remove functionality
+        document.querySelectorAll(".remove-btn").forEach((btn) => {
+          btn.addEventListener("click", removeFromCart);
+        });
+      }
+
+      function removeFromCart(e) {
+        const index = parseInt(e.target.dataset.index);
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        cart.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        displayCart();
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+Advanced Machine Test: Multi-Page API + DOM
+Web App
+
+
+Duration: 3–4 hours
+Stack: HTML, CSS, Vanilla JS
+APIs Used (No Key Needed):- Fake Store API: https://fakestoreapi.com/products- JSONPlaceholder: https://jsonplaceholder.typicode.com/users
+Scenario — SmartShop Portal
+
+
+Page 1 — register.html (Form Validation + LocalStorage)
+
+
+• Registration form: name, email, password, confirm password.
+• Validate: email format, password min 6 chars, must match confirm password.
+• On success, save user data to localStorage.
+• Redirect to products.html.
+• DOM tasks: inline validation errors, save user object.
+
+
+Page 2 — products.html (API Fetch + Cards + Add to Cart)
+
+• Fetch products from https://fakestoreapi.com/products.
+• Display product cards: Image, Title, Price, Add to Cart.
+• Add to Cart → save product in localStorage (cart).
+• Cart count visible in header.
+• DOM tasks: API fetch, render cards, handle errors/loading, cart update.
+
+
+Page 3 — cart.html (Cart + Remove Items)
+
+• Show products saved in cart.
+• Each item → Title, Price, Remove button.
+• Show total price at bottom.
+• If empty, show 'Cart is empty.'
+• DOM tasks: calculate total, remove item (update DOM + localStorage).
+
+
+Page 4 — profile.html (User Data + Orders API)
+
+
+• Fetch dummy user profile from JSONPlaceholder:
+https://jsonplaceholder.typicode.com/users/1.
+• Display Name, Email, Address.
+• Show logged-in user data from localStorage.
+• Add 'Clear Data & Logout' button → clears localStorage + redirect to register.html.
+• DOM tasks: merge API + localStorage data, conditional rendering for logout.
+Bonus (Optional)
+• Add filter by category on products.html using API categories endpoint.
+• Add sorting by price (asc/desc).
+• Save recently viewed products in localStorage (show on profile page).
+
+Submission
+
+• Include register.html, products.html, cart.html, profile.html, styles.css, and JS files.
+• Work offline except API calls.
+• Handle errors, validation, empty states.
